@@ -19,15 +19,18 @@ sys.path.append("./")
 
 @click.command()
 @click.argument('path')
-def monitor(path):
+@click.argument('task')
+def monitor(path,task):
     if ":" in path:
         file, obj = path.split(":")
         f = import_module(file)
         app = getattr(f, obj)
 
-        app.move_data()
         setattr(Base, "app", app)
         # start server
-        create_monitor()
-    elif path == "create_table":
-        create_table()
+        if task == "start":
+            app.move_data()
+            create_monitor()
+        elif task == "create_table":
+            create_table()
+            return 0

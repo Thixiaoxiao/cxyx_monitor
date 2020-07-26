@@ -5,6 +5,7 @@
 # Author:       Chenxiyuxiao
 # Date:         2020/7/20
 # -------------------------------------------------------------------------------
+import sys
 import time
 import traceback
 from cxyx_monitor.utils.timemk import trans2mk
@@ -59,7 +60,9 @@ class Task(Basedb):
 
 
 def create_table():
+    print("start create table")
     Basedb.metadata.create_all(Base.get_engine())
+    print("end create table")
 
 
 class Parse:

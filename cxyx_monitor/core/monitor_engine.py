@@ -133,7 +133,7 @@ def _total_count():
 def _index():
     #
     parse = Parse()
-    table_key = ["id", "函数名", "处理线程", "创建时间", "状态"]
+    table_key = ["函数名", "处理线程", "创建时间", "状态","耗时"]
     array = []
 
     for obj in parse.get_desc_obj(10):
@@ -143,14 +143,16 @@ def _index():
                 status = "success"
             elif obj.fail_time:
                 status = "fail"
-
+            time_need = "运行中"
+            if obj.after_time and obj.before_time:
+                time_need = str(obj.after_time - obj.before_time) + "秒"
             array.append({
-                "id": obj.task_id[:3] + "…",
                 "funcname": obj.funcname,
                 "thred": obj.task_tpid,
                 "status": status,
                 "beforetime": trans2date(obj.before_time).strftime(
-                    "%m.%d %H:%M")
+                    "%m.%d %H:%M"),
+                "time_need": time_need
             })
         except Exception:
             pass

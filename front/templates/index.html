@@ -314,11 +314,12 @@
                             <div class="ul_listIn">
                                 {% for item in array %}
                                     <ul class="ul_con">
-                                    <li>{{ item.get("id") }}</li>
+
                                     <li>{{ item.get("funcname") }}</li>
                                     <li>{{ item.get("thred") }}</li>
                                     <li>{{ item.get("beforetime") }}</li>
                                     <li>{{ item.get("status") }}</li>
+                                    <li>{{ item.get("time_need") }}</li>
                                 </ul>
                                 {%endfor%}
 

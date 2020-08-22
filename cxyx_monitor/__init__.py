@@ -6,7 +6,7 @@ import json
 from cxyx import CXYX
 from cxyx.core.config import Config
 
-Config.MYSQL_URL = "sqlite:///test.db?check_same_thread=False"
+Config.MYSQL_URL = "sqlite:///cxyx_moitor.db?check_same_thread=False"
 from cxyx.core.add_feature import do_sth_before_task, do_sth_after_task, \
     do_sth_success_task, do_sth_fail_task
 from cxyx.utils.redis_engine import RedisEngine
